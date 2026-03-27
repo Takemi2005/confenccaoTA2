@@ -18,8 +18,8 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;      // ❌ estava em Filament\Forms\Columns
 use Filament\Forms\Components\Repeater;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Forms\Get;                       // ❌ namespace errado
-use Filament\Forms\Set;                       // ❌ namespace errado
+use Filament\Schemas\Components\Utilities\Get;
+use Filament\Schemas\Components\Utilities\Set;                      
 
 class PedidoResource extends Resource
 {

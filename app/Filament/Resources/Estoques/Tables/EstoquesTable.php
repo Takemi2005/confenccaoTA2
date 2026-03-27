@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Filament\Resources\Produtos\Tables;
+namespace App\Filament\Resources\Estoques\Tables;
 
-use Faker\Core\Color;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -10,22 +9,19 @@ use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class ProdutosTable
+class EstoquesTable
 {
     public static function configure(Table $table): Table
     {
         return $table
             ->columns([
-                TextColumn::make('nome')
+                TextColumn::make('produto.id')
                     ->searchable(),
-                TextColumn::make('referencia')
-                    ->searchable(),
-                TextColumn::make('preco_venda')
+                TextColumn::make('quantidade')
                     ->numeric()
                     ->sortable(),
-                TextColumn::make('estoque')
-                    ->numeric()
-                    ->sortable(),
+                TextColumn::make('tipo')
+                    ->badge(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -50,6 +46,7 @@ class ProdutosTable
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
+                
             ]);
     }
 }

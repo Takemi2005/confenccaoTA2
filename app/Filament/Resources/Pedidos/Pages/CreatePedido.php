@@ -9,16 +9,16 @@ class CreatePedido extends CreateRecord
 {
     protected static string $resource = PedidoResource::class;
 
-    protected function afterCreate(): void
+    protected function mutateFormDataBeforeCreate(array $data): array
     {
-      
+        $total = 0;
 
-        $pedido = $this->record;
-        $total = $pedido->itens()->sum(function ($item) {
-            return $item->quantidade * $item->preco_unitario;
-        });
-        
-        $pedido->update(['valor_total' => $total]);
+        foreach ($data['itens'] ?? [] as $item) {
+            $total += (float)($item['quantidade'] ?? 0) * (float)($item['preco_unitario'] ?? 0);
+        }
+
+        $data['valor_total'] = $total;
+
+        return $data;
     }
-    
 }

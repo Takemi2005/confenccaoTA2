@@ -10,16 +10,16 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        Schema::create('produtos', function (Blueprint $table) {
-            $table->id();
-            $table->string('nome');
-            $table->decimal('referencia')->nullable();
-            $table->decimal('preco_venda', 10, 2)->nullable();
-            $table->decimal('estoque')->default(0);
-            $table->timestamps();
-        });
-    }
+{
+    Schema::create('produtos', function (Blueprint $table) {
+        $table->id();
+        $table->string('nome'); // Ex: Camiseta Básica Preta
+        $table->string('referencia')->nullable(); // Ex: CAM-PRE-001
+        $table->decimal('preco_venda', 10, 2)->nullable(); // Ex: 89.90
+        $table->integer('estoque')->default(0); // Quantidade atual
+        $table->timestamps();
+    });
+}
 
     /**
      * Reverse the migrations.

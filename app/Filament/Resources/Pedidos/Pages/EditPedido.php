@@ -19,15 +19,16 @@ class EditPedido extends EditRecord
         ];
     }
 
-    protected function afterSave(): void
-    {
-        $pedido = $this->record;
-        
-        $total = $pedido->itens()->sum(function ($item) {
-            return $item->quantidade * $item->preco_unitario;
-        });
-        
-        $pedido->update(['valor_total' => $total]);
-    }
-}
+   protected function mutateFormDataBeforeSave(array $data): array
+{
+    $total = 0;
 
+    foreach ($data['itens'] ?? [] as $item) {
+        $total += (float)($item['quantidade'] ?? 0) * (float)($item['preco_unitario'] ?? 0);
+    }
+
+    $data['valor_total'] = $total;
+
+    return $data;
+}
+}
