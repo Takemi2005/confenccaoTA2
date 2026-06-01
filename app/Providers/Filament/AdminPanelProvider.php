@@ -40,6 +40,16 @@ class AdminPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->widgets([
                 AccountWidget::class,
+                \App\Filament\Widgets\GraficoProdutos::class,
+                \App\Filament\Widgets\GraficoEstoques::class,
+                \App\Filament\Widgets\GraficoMovimentacaoEstoques::class,
+                \App\Filament\Widgets\GraficoPedidos::class,
+                \App\Filament\Widgets\GraficoItensPedidos::class,
+                \App\Filament\Widgets\GraficoClientes::class,
+                \App\Filament\Widgets\GraficoInsumos::class,
+                \App\Filament\Widgets\GraficoFornecedores::class,
+                \App\Filament\Widgets\GraficoInboxMessages::class,
+                \App\Filament\Widgets\GraficoUsers::class,
                // FilamentInfoWidget::class,
             ])
             ->middleware([
